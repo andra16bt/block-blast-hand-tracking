@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0a0420" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="icon.svg" />
+    <title>Block Blast Hand Tracking</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <div id="bg"><i></i><i></i><i></i><i></i></div>
+    <div class="app">
+      <header class="glass">
+        <h1>BLOCK BLAST HAND TRACKING<span>LIQUID GLASS</span></h1>
+        <div class="hud">
+          <div class="stat">BEST<b id="bs">00000</b></div>
+          <div class="stat">SCORE<b id="sc">00000</b></div>
+          <div class="stat" id="cbWrap">COMBO<b id="cb">x0</b></div>
+          <div class="stat" id="tmWrap" style="display: none">
+            TIME<b id="tm">90</b>
+          </div>
+        </div>
+        <div class="tools">
+          <button id="menubtn" class="pill sm glass">☰</button>
+          <button id="undo" class="pill sm glass">↩</button>
+          <button id="snd" class="pill sm glass">🔊</button>
+        </div>
+      </header>
+      <div id="boardWrap" class="glass"><div id="board"></div></div>
+      <div id="slots" class="glass">
+        <div class="slot" data-i="0"></div>
+        <div class="slot" data-i="1"></div>
+        <div class="slot" data-i="2"></div>
+      </div>
+      <div class="foot">
+        <span id="hint">DRAG A BLOCK ONTO THE GRID</span
+        ><span>FPS <b id="fps">0</b></span>
+      </div>
+    </div>
+    <div id="pip"><video id="vid" playsinline muted></video></div>
+    <div id="trk" class="glass">Tracking: Off</div>
+    <div id="cur"></div>
+    <canvas id="fx"></canvas>
+    <div id="tut">
+      <div class="card glass">
+        <h2>HAND TRACKING</h2>
+        <p>
+          🤏 <b>Cubit</b> jempol + telunjuk di atas blok untuk mengambil<br />
+          ✋ <b>Buka</b> jari untuk menjatuhkan<br />
+          ✊ <b>Kepal</b> untuk memutar blok<br />
+          🤏 Cubit di atas tombol untuk menekannya (Undo, Restart)<br />
+          💡 Pastikan cahaya cukup. Titik 🟢🟡🔴 menunjukkan kualitas tracking.
+        </p>
+        <button id="tutok" class="pill glass">MULAI</button>
+      </div>
+    </div>
+    <div id="menu">
+      <div class="card glass">
+        <h2>PILIH MODE</h2>
+        <p class="sub">Gerakkan tangan, lalu cubit tombol untuk memilih</p>
+        <button class="pill glass mb" data-m="classic">
+          CLASSIC<small>Main sampai tidak ada blok yang muat</small>
+        </button>
+        <button class="pill glass mb" data-m="daily">
+          DAILY<small>Seed blok sama untuk hari ini</small>
+        </button>
+        <button class="pill glass mb" data-m="time">
+          TIME ATTACK<small>Kejar skor dalam 90 detik</small>
+        </button>
+        <button class="pill glass mb" data-m="zen">
+          ZEN<small>Tanpa game over, santai</small>
+        </button>
+        <button id="resume" class="pill glass mb" style="display: none">
+          ▶ LANJUT
+        </button>
+        <button id="retry" class="pill glass mb" style="display: none">
+          📷 COBA LAGI KAMERA
+        </button>
+      </div>
+    </div>
+    <div id="over">
+      <div class="card glass">
+        <h2 id="gt">GAME OVER</h2>
+        <span id="nb" class="lbl nb">★ NEW BEST ★</span>
+        <span class="lbl">FINAL SCORE</span><b id="fs">0</b
+        ><button id="rs" class="pill glass">RESTART</button
+        ><button id="omenu" class="pill glass">☰ MENU</button>
+      </div>
+    </div>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/hand-tracking.js"></script>
+  </body>
+</html>
